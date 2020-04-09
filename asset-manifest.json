@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/shiny-kitten/static/css/main.5f361e03.chunk.css",
+    "main.js": "/shiny-kitten/static/js/main.fe5aa31b.chunk.js",
+    "main.js.map": "/shiny-kitten/static/js/main.fe5aa31b.chunk.js.map",
+    "runtime-main.js": "/shiny-kitten/static/js/runtime-main.231ccf2e.js",
+    "runtime-main.js.map": "/shiny-kitten/static/js/runtime-main.231ccf2e.js.map",
+    "static/js/2.45772cd8.chunk.js": "/shiny-kitten/static/js/2.45772cd8.chunk.js",
+    "static/js/2.45772cd8.chunk.js.map": "/shiny-kitten/static/js/2.45772cd8.chunk.js.map",
+    "index.html": "/shiny-kitten/index.html",
+    "precache-manifest.cc8394459866455314feb784e8c9d708.js": "/shiny-kitten/precache-manifest.cc8394459866455314feb784e8c9d708.js",
+    "service-worker.js": "/shiny-kitten/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/shiny-kitten/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.45772cd8.chunk.js.LICENSE.txt": "/shiny-kitten/static/js/2.45772cd8.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/shiny-kitten/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.231ccf2e.js",
+    "static/js/2.45772cd8.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.fe5aa31b.chunk.js"
+  ]
+}
