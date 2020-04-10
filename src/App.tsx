@@ -1,24 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Route, Switch } from 'react-router-dom';
 
-import './App.css';
+import Homepage from './components/Homepage';
+import Footer from './components/common/Footer';
 
-interface AppProps {
-  text: string;
-}
-
-function App({ text }: AppProps) {
+function App() {
   return (
-    <div className='App'>
-      <a className='App-link' href='https://reactjs.org'>
-        {text}
-      </a>
-    </div>
+    <>
+      <Switch>
+        <Route
+          exact
+          path='/'
+          render={(props) => <Homepage {...props} text={'Shiny Kitten'} />}
+        />
+      </Switch>
+      <Footer />
+    </>
   );
 }
-
-App.propTypes = {
-  text: PropTypes.string.isRequired,
-};
 
 export default App;
