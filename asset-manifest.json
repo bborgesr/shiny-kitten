@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/shiny-kitten/static/css/main.c8161f08.chunk.css",
-    "main.js": "/shiny-kitten/static/js/main.abee6183.chunk.js",
-    "main.js.map": "/shiny-kitten/static/js/main.abee6183.chunk.js.map",
-    "runtime-main.js": "/shiny-kitten/static/js/runtime-main.6fe388ed.js",
-    "runtime-main.js.map": "/shiny-kitten/static/js/runtime-main.6fe388ed.js.map",
-    "static/js/2.f9e53f8a.chunk.js": "/shiny-kitten/static/js/2.f9e53f8a.chunk.js",
-    "static/js/2.f9e53f8a.chunk.js.map": "/shiny-kitten/static/js/2.f9e53f8a.chunk.js.map",
-    "index.html": "/shiny-kitten/index.html",
-    "precache-manifest.e82c17be3fe7f7337fc5dc8fcc2aa828.js": "/shiny-kitten/precache-manifest.e82c17be3fe7f7337fc5dc8fcc2aa828.js",
-    "service-worker.js": "/shiny-kitten/service-worker.js",
-    "static/css/main.c8161f08.chunk.css.map": "/shiny-kitten/static/css/main.c8161f08.chunk.css.map",
-    "static/js/2.f9e53f8a.chunk.js.LICENSE.txt": "/shiny-kitten/static/js/2.f9e53f8a.chunk.js.LICENSE.txt",
-    "static/media/cat.png": "/shiny-kitten/static/media/cat.7dd6c46e.png"
+    "main.css": "http://localhost:3000/static/css/main.c8161f08.chunk.css",
+    "main.js": "http://localhost:3000/static/js/main.5ed6137c.chunk.js",
+    "main.js.map": "http://localhost:3000/static/js/main.5ed6137c.chunk.js.map",
+    "runtime-main.js": "http://localhost:3000/static/js/runtime-main.ec89271d.js",
+    "runtime-main.js.map": "http://localhost:3000/static/js/runtime-main.ec89271d.js.map",
+    "static/js/2.f9e53f8a.chunk.js": "http://localhost:3000/static/js/2.f9e53f8a.chunk.js",
+    "static/js/2.f9e53f8a.chunk.js.map": "http://localhost:3000/static/js/2.f9e53f8a.chunk.js.map",
+    "index.html": "http://localhost:3000/index.html",
+    "precache-manifest.4caa0efe8e2cf026caa0ee18186aa9a4.js": "http://localhost:3000/precache-manifest.4caa0efe8e2cf026caa0ee18186aa9a4.js",
+    "service-worker.js": "http://localhost:3000/service-worker.js",
+    "static/css/main.c8161f08.chunk.css.map": "http://localhost:3000/static/css/main.c8161f08.chunk.css.map",
+    "static/js/2.f9e53f8a.chunk.js.LICENSE.txt": "http://localhost:3000/static/js/2.f9e53f8a.chunk.js.LICENSE.txt",
+    "static/media/cat.png": "http://localhost:3000/static/media/cat.7dd6c46e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.6fe388ed.js",
+    "static/js/runtime-main.ec89271d.js",
     "static/js/2.f9e53f8a.chunk.js",
     "static/css/main.c8161f08.chunk.css",
-    "static/js/main.abee6183.chunk.js"
+    "static/js/main.5ed6137c.chunk.js"
   ]
 }
