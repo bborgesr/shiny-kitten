@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/shiny-kitten/precache-manifest.76e51f1c7bc197d2e82747bc82cd4ce0.js"
+  "/shiny-kitten/precache-manifest.c0a6494f24b1e8575262e8ddbb0ddff8.js"
 );
 
 self.addEventListener('message', (event) => {
