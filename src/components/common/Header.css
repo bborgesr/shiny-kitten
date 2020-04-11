@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  background-color: #112f50;
+  width: 100%;
+  top: 0;
+  height: 40px;
+}
+
+.header a {
+  margin: auto 20px;
+  color: burlywood;
+  text-decoration: none;
+  font-weight: bolder;
+  margin-left: 20px;
+  vertical-align: middle;
+}
