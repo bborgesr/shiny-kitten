@@ -8,7 +8,7 @@ interface AppProps {
 
 function Homepage({ text }: AppProps) {
   return (
-    <div className='Homepage'>
+    <div className='homepage'>
       <h1>{text}</h1>
     </div>
   );
