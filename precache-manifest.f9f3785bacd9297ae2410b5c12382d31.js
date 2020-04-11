@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "822ffb552b63c699b56b25cc20880dfa",
+    "revision": "569026c58cb4ddfe8120ec0500ce3b5f",
     "url": "/shiny-kitten/index.html"
   },
   {
-    "revision": "17bc04e60f6cf42993ba",
-    "url": "/shiny-kitten/static/css/main.c8161f08.chunk.css"
+    "revision": "023dc69b927af06f7128",
+    "url": "/shiny-kitten/static/css/main.210431ce.chunk.css"
   },
   {
-    "revision": "d4e4bb4dd495184cb733",
-    "url": "/shiny-kitten/static/js/2.82fba4b7.chunk.js"
+    "revision": "0dcf1055fb32e020cc0f",
+    "url": "/shiny-kitten/static/js/2.38ee7e50.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/shiny-kitten/static/js/2.82fba4b7.chunk.js.LICENSE.txt"
+    "url": "/shiny-kitten/static/js/2.38ee7e50.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "17bc04e60f6cf42993ba",
-    "url": "/shiny-kitten/static/js/main.dc456c6c.chunk.js"
+    "revision": "023dc69b927af06f7128",
+    "url": "/shiny-kitten/static/js/main.fd81958f.chunk.js"
   },
   {
     "revision": "09cf5e75e458d21f6384",
