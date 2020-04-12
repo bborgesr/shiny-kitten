@@ -6,20 +6,19 @@ import * as projectActions from '../../redux/actions/projectActions';
 
 function ManageProject(props) {
   const history = useHistory();
-  const [loading, setLoading] = useState(true);
   const [project, setProject] = useState(props.location.state.project);
-  const [newToDo, setNewToDo] = useState({ id: '', name: '', createdAt: '', doneAt: ''});
+  const [newToDo, setNewToDo] = useState({
+    id: '',
+    name: '',
+    createdAt: '',
+    doneAt: '',
+  });
   const username = props.location.state.username;
 
   useEffect(() => {
-    props
-      .loadProjects(username)
-      .then(() => {
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Loading projects failed: ' + error);
-      });
+    props.loadProjects(username).catch((error) => {
+      console.error('Loading projects failed: ' + error);
+    });
   }, [props, username]);
 
   const goBack = () => {
@@ -53,7 +52,13 @@ function ManageProject(props) {
 
   const handleToDoChange = (event) => {
     event.preventDefault();
-    setNewToDo(event.target.value);
+    const newToDoValue = {
+      ...newToDo,
+      id: new Date().toISOString(),
+      name: event.target.value,
+      createdAt: new Date(),
+    };
+    setNewToDo(newToDoValue);
   };
 
   const handleToDoSubmit = (event) => {
@@ -97,7 +102,7 @@ function ManageProject(props) {
           type='text'
           name='todo'
           className='form-control'
-          value={newToDo}
+          value={newToDo.name}
           onChange={handleToDoChange}
         />
         <input type='submit' value='Save ToDo' />
@@ -114,7 +119,7 @@ function ManageProject(props) {
         <tbody>
           {project.todos.map((item, index) => (
             <tr key={index}>
-              <td>{item}</td>
+              <td>{item.name}</td>
               <td>
                 <button
                   onClick={function () {
