@@ -27,7 +27,6 @@ function Projects(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // props.createProject(project);
     fetch(
       `http://localhost:4000/person/${props.location.state.username}/projects`,
       {
@@ -38,7 +37,6 @@ function Projects(props) {
         body: JSON.stringify([...props.projects, project]),
       }
     );
-    // console.log(JSON.stringify([...props.projects, project]));
   };
 
   return (

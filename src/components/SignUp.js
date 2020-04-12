@@ -26,7 +26,7 @@ function SignUp(props) {
           }
         })
         .catch(function (error) {
-          console.log(error);
+          console.error(error);
         });
     } else if (props.mode === 'signin') {
       fetch(`http://localhost:4000/person/${username}`, {
@@ -45,7 +45,7 @@ function SignUp(props) {
           }
         })
         .catch(function (error) {
-          console.log(error);
+          console.error(error);
         });
     }
   };
