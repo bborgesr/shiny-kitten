@@ -17,11 +17,20 @@ function Projects(props) {
       });
   }, [props]);
 
-  const [project, setProject] = useState({ name: '' });
+  const [project, setProject] = useState({
+    id: '',
+    name: '',
+    todos: [],
+    done: [],
+  });
 
   const handleChange = (event) => {
     event.preventDefault();
-    const projectValue = { ...project, name: event.target.value };
+    const projectValue = {
+      ...project,
+      name: event.target.value,
+      id: new Date().toISOString(),
+    };
     setProject(projectValue);
   };
 
@@ -46,8 +55,14 @@ function Projects(props) {
       ) : (
         <form onSubmit={handleSubmit}>
           <h1>Projects</h1>
-          <h3>Add Project</h3>
-          <input type='text' onChange={handleChange} value={project.name} />
+          <label htmlFor='projectName'>Add Project</label>
+          <input
+            type='text'
+            name='projectName'
+            className='form-control'
+            value={project.name}
+            onChange={handleChange}
+          />
           <input type='submit' value='Save' />
           <ProjectList
             projects={props.projects}
