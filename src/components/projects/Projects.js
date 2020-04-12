@@ -15,8 +15,7 @@ function Projects(props) {
       .catch((error) => {
         console.error('Loading projects failed: ' + error);
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props]);
 
   const [project, setProject] = useState({ name: '' });
 
@@ -28,7 +27,18 @@ function Projects(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.createProject(project);
+    // props.createProject(project);
+    fetch(
+      `http://localhost:4000/person/${props.location.state.username}/projects`,
+      {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify([...props.projects, project]),
+      }
+    );
+    // console.log(JSON.stringify([...props.projects, project]));
   };
 
   return (

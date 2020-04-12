@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 import * as projectActions from '../../redux/actions/projectActions';
 
 function ManageProject(props) {
+  const history = useHistory();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,10 +17,26 @@ function ManageProject(props) {
       .catch((error) => {
         console.error('Loading projects failed: ' + error);
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props]);
 
-  return <div>{loading ? 'Loading' : <h1>Manage project</h1>}</div>;
+  const goBack = () => {
+    history.push({
+      pathname: '/projects',
+      state: {
+        username: props.location.state.username,
+        projects: props.projects,
+      },
+    });
+  };
+
+  return (
+    <div>
+      <button type='button' onClick={goBack}>
+        Go back
+      </button>
+      <h1>Manage project</h1>
+    </div>
+  );
 }
 
 function mapStateToProps(state) {
