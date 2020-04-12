@@ -14,8 +14,24 @@
   -o-background-size: cover;
 }
 
-h1 {
+.homepage h1 {
   color: burlywood;
   font-family: Impact;
   font-size: 100px;
+}
+
+.homepage button {
+  position: absolute;
+  height: 40px;
+  border-radius: 15%;
+  background-color: rgb(224, 203, 174);
+  font-size: 20px;
+}
+
+.homepage .signup {
+  top: 65%;
+}
+
+.homepage .signin {
+  top: 72%;
 }
