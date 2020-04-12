@@ -15,7 +15,7 @@ function SignUp(props) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: username, password: password }),
+        body: JSON.stringify({ username, password }),
       })
         .then(function (res) {
           if (res.status === 200) {
@@ -34,7 +34,7 @@ function SignUp(props) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: username, password: password }),
+        body: JSON.stringify({ username, password }),
       })
         .then(function (res) {
           if (res.status === 200) {
