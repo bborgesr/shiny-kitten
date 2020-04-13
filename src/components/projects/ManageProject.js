@@ -86,7 +86,6 @@ function ManageProject(props) {
       todos: [...project.todos, newToDo],
     };
     setProject(projectValue);
-    setNewToDo('');
   };
 
   const handleToDoEdit = (event) => {
@@ -131,10 +130,17 @@ function ManageProject(props) {
   };
 
   return (
-    <div>
+    <div style={{ margin: '30px' }}>
       <button className='btn btn-warning' onClick={goBack}>
         Go back
       </button>
+      <b style={{ color: '#112f50', display: 'block' }}>
+        You must use this button to go back instead of the browser's.
+      </b>
+      <b style={{ color: '#112f50', display: 'block' }}>
+        You must use click on "Save Project" to save your changes to the
+        project.
+      </b>
       <h1>Manage project</h1>
       <h3>Project Name</h3>
       <input
@@ -154,65 +160,69 @@ function ManageProject(props) {
           value={newToDo.name}
           onChange={handleToDoChange}
         />
-        <input type='submit' value='Save ToDo' />
+        <input type='submit' value='Save' className='btn btn-secondary' />
       </form>
-      <table className='table'>
-        <thead>
-          <tr>
-            <th>ToDo</th>
-            <th style={{ display: 'flex' }}>
-              <p style={{ marginTop: '18px' }}>Edit Name</p>
-              <input
-                style={{ marginTop: '10px', marginLeft: '15px' }}
-                type='text'
-                className='form-control'
-                value={toDoEdit}
-                onChange={handleToDoEdit}
-              />
-            </th>
-            <th>Remove</th>
-            <th>Done</th>
-          </tr>
-        </thead>
-        <tbody>
-          {project.todos.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>
-                <button
-                  onClick={function () {
-                    handleToDoEditSubmit(item);
-                  }}
-                >
-                  <i className='icon-edit'></i>
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={function () {
-                    onDeleteButtonClick(item);
-                  }}
-                >
-                  <i className='icon-trash'></i>
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={function () {
-                    onDoneButtonClick(item);
-                  }}
-                >
-                  <i className='icon-thumbs-up'></i>
-                </button>
-              </td>
+      {project.todos.length > 0 ? (
+        <table className='table'>
+          <thead>
+            <tr>
+              <th>ToDo</th>
+              <th style={{ display: 'flex' }}>
+                <p style={{ marginTop: '18px' }}>Edit Name</p>
+                <input
+                  style={{ marginTop: '10px', marginLeft: '15px' }}
+                  type='text'
+                  className='form-control'
+                  value={toDoEdit}
+                  onChange={handleToDoEdit}
+                />
+              </th>
+              <th>Mark as Done</th>
+              <th>Delete</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {project.todos.map((item, index) => (
+              <tr key={index}>
+                <td>{item.name}</td>
+                <td>
+                  <button
+                    onClick={function () {
+                      handleToDoEditSubmit(item);
+                    }}
+                  >
+                    <i className='icon-edit'></i>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={function () {
+                      onDoneButtonClick(item);
+                    }}
+                  >
+                    <i className='icon-thumbs-up'></i>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={function () {
+                      onDeleteButtonClick(item);
+                    }}
+                  >
+                    <i className='icon-trash'></i>
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        ''
+      )}
       <h3>Done</h3>
       <ul>
         {project.done.map((item) => (
-          <li>{item.name}</li>
+          <li style={{ textDecoration: 'line-through' }}>{item.name}</li>
         ))}
       </ul>
       <div style={{ display: 'flex', justifyContent: 'center' }}>

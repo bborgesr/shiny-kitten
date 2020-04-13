@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+input[type='submit'] {
+  margin: 0 0 10px 10px;
+}
+
+#root {
+  background-color: rgb(226, 236, 245);
+  margin: 60px 0;
+}
+
+html {
+  background-color: rgb(226, 236, 245);
+}

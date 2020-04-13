@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Homepage from './components/Homepage';
-import About from './components/About';
 import NotFound from './components/NotFound';
 import SignUp from './components/SignUp';
 import Projects from './components/projects/Projects';
@@ -16,7 +15,6 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={Homepage} />
-        <Route path='/about' component={About} />
         <Route
           path='/signup'
           render={(props) => <SignUp {...props} mode={'signup'} />}

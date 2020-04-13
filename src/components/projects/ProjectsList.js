@@ -3,23 +3,25 @@ import { Link } from 'react-router-dom';
 
 function ProjectsList({ projects, username }) {
   return (
-    <div>
+    <ul>
       {projects.map((project, i) => (
-        <div key={i}>
-          <Link
-            to={{
-              pathname: '/project/' + project.name,
-              state: {
-                username,
-                project,
-              },
-            }}
-          >
-            {project.name}
-          </Link>
-        </div>
+        <li key={i}>
+          <h4>
+            <Link
+              to={{
+                pathname: '/project/' + project.name,
+                state: {
+                  username,
+                  project,
+                },
+              }}
+            >
+              {project.name}
+            </Link>
+          </h4>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

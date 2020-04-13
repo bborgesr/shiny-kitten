@@ -59,8 +59,15 @@ function SignUp(props) {
   };
 
   return (
-    <div>
-      <form onSubmit={onSave}>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <form
+        onSubmit={onSave}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          margin: '150px auto',
+        }}
+      >
         <label htmlFor='username'>Username</label>
         <input
           type='text'
@@ -80,6 +87,8 @@ function SignUp(props) {
         <input
           type='submit'
           value={props.mode === 'signup' ? 'Sign Up' : 'Sign In'}
+          className='btn btn-primary'
+          style={{ margin: '20px 0' }}
         />
       </form>
     </div>

@@ -19,7 +19,7 @@ function Homepage() {
       <h1>ToDo Manager</h1>
       <div className='break'></div>
       <button className='signup' onClick={handleSignUpClick}>
-        Sign up
+        Sign Up
       </button>
       <button className='signin' onClick={handleSignInClick}>
         Sign In

@@ -1,14 +1,21 @@
 .header {
+  position: fixed;
   display: flex;
   background-color: #112f50;
   width: 100%;
   top: 0;
   height: 40px;
+  justify-content: space-between;
+}
+
+.header h4 {
+  color: burlywood;
+  margin-left: 20px;
 }
 
 .header a {
-  margin: auto 20px;
   color: burlywood;
+  margin: auto 20px;
   text-decoration: none;
   font-weight: bolder;
 }

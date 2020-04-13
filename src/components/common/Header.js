@@ -1,15 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import './Header.css';
 
-function Header() {
+function Header(props) {
   return (
     <div className='header'>
-      <Link to='/'>Home</Link>
-      <Link to='/about'>About</Link>
+      <h4>ToDo Manager</h4>
+      {['/', '/signin', '/signup'].includes(props.location.pathname) ? (
+        ''
+      ) : (
+        <Link to='/'>Log Out</Link>
+      )}
     </div>
   );
 }
 
-export default Header;
+export default withRouter(Header);

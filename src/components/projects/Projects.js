@@ -49,7 +49,7 @@ function Projects(props) {
   };
 
   return (
-    <div>
+    <div style={{ margin: '30px' }} className='container'>
       {loading ? (
         'Loading'
       ) : (
@@ -63,7 +63,7 @@ function Projects(props) {
             value={project.name}
             onChange={handleChange}
           />
-          <input type='submit' value='Save' />
+          <input type='submit' value='Save' className='btn btn-secondary' />
           <ProjectList
             projects={props.projects}
             username={props.location.state.username}
