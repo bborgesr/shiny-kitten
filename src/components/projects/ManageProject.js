@@ -6,14 +6,17 @@ import * as projectActions from '../../redux/actions/projectActions';
 
 function ManageProject(props) {
   const history = useHistory();
+
+  const username = props.location.state.username;
   const [project, setProject] = useState(props.location.state.project);
+
   const [newToDo, setNewToDo] = useState({
     id: '',
     name: '',
     createdAt: '',
     doneAt: '',
   });
-  const username = props.location.state.username;
+  const [toDoEdit, setToDoEdit] = useState('');
 
   useEffect(() => {
     props.loadProjects(username).catch((error) => {
@@ -42,6 +45,21 @@ function ManageProject(props) {
       },
       body: JSON.stringify([...otherProjects, project]),
     });
+    goBack();
+  };
+
+  const onDelete = () => {
+    const otherProjects = props.projects.filter(
+      (oldProject) => oldProject.id !== project.id
+    );
+    fetch(`http://localhost:4000/person/${username}/projects`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([...otherProjects]),
+    });
+    goBack();
   };
 
   const onNameChange = (event) => {
@@ -68,22 +86,53 @@ function ManageProject(props) {
       todos: [...project.todos, newToDo],
     };
     setProject(projectValue);
+    setNewToDo('');
   };
 
-  const onEditButtonClick = (item) => {
-    console.log(item);
+  const handleToDoEdit = (event) => {
+    event.preventDefault();
+    setToDoEdit(event.target.value);
   };
 
-  // const test = () => {
-  //   console.log(project);
-  // };
+  const handleToDoEditSubmit = (todo) => {
+    const updatedToDo = { ...todo, name: toDoEdit };
+    const allToDos = project.todos.map((todo) => {
+      if (todo.id === updatedToDo.id) return updatedToDo;
+      else return todo;
+    });
+    const projectValue = {
+      ...project,
+      todos: allToDos,
+    };
+    setProject(projectValue);
+    setToDoEdit('');
+  };
+
+  const onDeleteButtonClick = (todo) => {
+    const thisToDo = todo;
+    const allToDos = project.todos.filter((todo) => todo.id !== thisToDo.id);
+    const projectValue = {
+      ...project,
+      todos: allToDos,
+    };
+    setProject(projectValue);
+  };
+
+  const onDoneButtonClick = (todo) => {
+    const thisToDo = todo;
+    const allToDos = project.todos.filter((todo) => todo.id !== thisToDo.id);
+    const allDones = [...project.done, thisToDo];
+    const projectValue = {
+      ...project,
+      todos: allToDos,
+      done: allDones,
+    };
+    setProject(projectValue);
+  };
 
   return (
     <div>
-      {/* <button type='button' onClick={test}>
-          test
-        </button> */}
-      <button type='button' onClick={goBack} className='btn btn-primary'>
+      <button className='btn btn-warning' onClick={goBack}>
         Go back
       </button>
       <h1>Manage project</h1>
@@ -111,7 +160,16 @@ function ManageProject(props) {
         <thead>
           <tr>
             <th>ToDo</th>
-            <th>Edit</th>
+            <th style={{ display: 'flex' }}>
+              <p style={{ marginTop: '18px' }}>Edit Name</p>
+              <input
+                style={{ marginTop: '10px', marginLeft: '15px' }}
+                type='text'
+                className='form-control'
+                value={toDoEdit}
+                onChange={handleToDoEdit}
+              />
+            </th>
             <th>Remove</th>
             <th>Done</th>
           </tr>
@@ -123,7 +181,7 @@ function ManageProject(props) {
               <td>
                 <button
                   onClick={function () {
-                    onEditButtonClick(item);
+                    handleToDoEditSubmit(item);
                   }}
                 >
                   <i className='icon-edit'></i>
@@ -132,7 +190,7 @@ function ManageProject(props) {
               <td>
                 <button
                   onClick={function () {
-                    // onDeleteButtonClick(item);
+                    onDeleteButtonClick(item);
                   }}
                 >
                   <i className='icon-trash'></i>
@@ -141,7 +199,7 @@ function ManageProject(props) {
               <td>
                 <button
                   onClick={function () {
-                    // onDoneButtonClick(item);
+                    onDoneButtonClick(item);
                   }}
                 >
                   <i className='icon-thumbs-up'></i>
@@ -154,10 +212,28 @@ function ManageProject(props) {
       <h3>Done</h3>
       <ul>
         {project.done.map((item) => (
-          <li>{item}</li>
+          <li>{item.name}</li>
         ))}
       </ul>
-      <button onClick={onSave}>Save Project</button>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <button
+          className='btn btn-success'
+          onClick={onSave}
+          style={{ marginRight: '20px' }}
+        >
+          Save Project
+        </button>
+        <button
+          className='btn btn-danger'
+          onClick={onDelete}
+          style={{ marginRight: '20px' }}
+        >
+          Delete Project
+        </button>
+        <button className='btn btn-secondary' onClick={goBack}>
+          Cancel Project
+        </button>
+      </div>
     </div>
   );
 }
