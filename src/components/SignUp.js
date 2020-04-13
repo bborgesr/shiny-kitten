@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { API_BASE_URL } from '../constants';
+
 function SignUp(props) {
   const history = useHistory();
 
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [error, setError] = useState('');
 
   const onSave = (event) => {
     event.preventDefault();
     if (props.mode === 'signup') {
-      fetch('http://localhost:4000/person', {
+      fetch(`${API_BASE_URL}/person`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -23,13 +26,15 @@ function SignUp(props) {
               pathname: '/projects',
               state: { username },
             });
+          } else if (res.status === 403) {
+            setError('Username already taken');
           }
         })
         .catch(function (error) {
           console.error(error);
         });
     } else if (props.mode === 'signin') {
-      fetch(`http://localhost:4000/person/${username}`, {
+      fetch(`${API_BASE_URL}/person/${username}`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -42,6 +47,10 @@ function SignUp(props) {
               pathname: '/projects',
               state: { username },
             });
+          } else if (res.status === 403) {
+            setError('Wrong username or password');
+            setUsername('');
+            setPassword('');
           }
         })
         .catch(function (error) {
@@ -68,6 +77,13 @@ function SignUp(props) {
           margin: '150px auto',
         }}
       >
+        {error !== '' ? (
+          <div className='alert alert-danger' role='alert'>
+            {error}
+          </div>
+        ) : (
+          ''
+        )}
         <label htmlFor='username'>Username</label>
         <input
           type='text'

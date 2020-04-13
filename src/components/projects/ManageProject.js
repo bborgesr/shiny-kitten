@@ -5,6 +5,8 @@ import moment from 'moment';
 
 import * as projectActions from '../../redux/actions/projectActions';
 
+import { API_BASE_URL } from '../../constants';
+
 import './ManageProject.css';
 
 function ManageProject(props) {
@@ -41,7 +43,7 @@ function ManageProject(props) {
     const otherProjects = props.projects.filter(
       (oldProject) => oldProject.id !== project.id
     );
-    fetch(`http://localhost:4000/person/${username}/projects`, {
+    fetch(`${API_BASE_URL}/person/${username}/projects`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -55,7 +57,7 @@ function ManageProject(props) {
     const otherProjects = props.projects.filter(
       (oldProject) => oldProject.id !== project.id
     );
-    fetch(`http://localhost:4000/person/${username}/projects`, {
+    fetch(`${API_BASE_URL}/person/${username}/projects`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

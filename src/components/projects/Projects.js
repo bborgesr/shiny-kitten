@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+
 import * as projectActions from '../../redux/actions/projectActions';
+
 import ProjectList from './ProjectsList';
 import Spinner from '../common/Spinner';
+
+import { API_BASE_URL } from '../../constants';
 
 function Projects(props) {
   const [loading, setLoading] = useState(true);
@@ -38,7 +42,7 @@ function Projects(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch(
-      `http://localhost:4000/person/${props.location.state.username}/projects`,
+      `${API_BASE_URL}/person/${props.location.state.username}/projects`,
       {
         method: 'post',
         headers: {
