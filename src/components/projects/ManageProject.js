@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 
 import * as projectActions from '../../redux/actions/projectActions';
+
+import './ManageProject.css';
 
 function ManageProject(props) {
   const history = useHistory();
@@ -74,7 +77,7 @@ function ManageProject(props) {
       ...newToDo,
       id: new Date().toISOString(),
       name: event.target.value,
-      createdAt: new Date(),
+      createdAt: moment(),
     };
     setNewToDo(newToDoValue);
   };
@@ -118,7 +121,7 @@ function ManageProject(props) {
   };
 
   const onDoneButtonClick = (todo) => {
-    const thisToDo = todo;
+    const thisToDo = { ...todo, doneAt: moment() };
     const allToDos = project.todos.filter((todo) => todo.id !== thisToDo.id);
     const allDones = [...project.done, thisToDo];
     const projectValue = {
@@ -142,7 +145,7 @@ function ManageProject(props) {
         project.
       </b>
       <h1>Manage project</h1>
-      <h3>Project Name</h3>
+      <h4>Project Name</h4>
       <input
         type='text'
         name='projectName'
@@ -150,7 +153,7 @@ function ManageProject(props) {
         value={project.name}
         onChange={onNameChange}
       />
-      <h3>ToDo</h3>
+      <h4>ToDo</h4>
       <form onSubmit={handleToDoSubmit}>
         <label htmlFor='todo'>Add ToDo</label>
         <input
@@ -219,10 +222,15 @@ function ManageProject(props) {
       ) : (
         ''
       )}
-      <h3>Done</h3>
-      <ul>
-        {project.done.map((item) => (
-          <li style={{ textDecoration: 'line-through' }}>{item.name}</li>
+      {project.done.length > 0 ? <h4>Done</h4> : ''}
+      <ul className='done-items'>
+        {project.done.map((item, index) => (
+          <div key={index}>
+            <li style={{ textDecoration: 'line-through' }}>
+              {item.name}
+              <span>{moment(item.doneAt).fromNow()}</span>
+            </li>
+          </div>
         ))}
       </ul>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
