@@ -251,7 +251,7 @@ function ManageProject(props) {
           Delete Project
         </button>
         <button className='btn btn-secondary' onClick={goBack}>
-          Cancel Project
+          Cancel
         </button>
       </div>
     </div>
