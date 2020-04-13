@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as projectActions from '../../redux/actions/projectActions';
 import ProjectList from './ProjectsList';
+import Spinner from '../common/Spinner';
 
 function Projects(props) {
   const [loading, setLoading] = useState(true);
@@ -51,7 +52,7 @@ function Projects(props) {
   return (
     <div style={{ margin: '30px' }} className='container'>
       {loading ? (
-        'Loading'
+        <Spinner />
       ) : (
         <form onSubmit={handleSubmit}>
           <h1>Projects</h1>
