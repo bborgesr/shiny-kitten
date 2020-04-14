@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import * as signupActions from '../redux/actions/signupActions';
 import { API_BASE_URL } from '../constants';
 
 function SignUp(props) {
@@ -13,50 +15,11 @@ function SignUp(props) {
   const onSave = (event) => {
     event.preventDefault();
     if (props.mode === 'signup') {
-      fetch(`${API_BASE_URL}/person`, {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      })
-        .then(function (res) {
-          if (res.status === 200) {
-            history.push({
-              pathname: '/projects',
-              state: { username },
-            });
-          } else if (res.status === 403) {
-            setError('Username already taken');
-          }
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
+      props.userSignUpPost(username, password);
     } else if (props.mode === 'signin') {
-      fetch(`${API_BASE_URL}/person/${username}`, {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      })
-        .then(function (res) {
-          if (res.status === 200) {
-            history.push({
-              pathname: '/projects',
-              state: { username },
-            });
-          } else if (res.status === 403) {
-            setError('Wrong username or password');
-            setUsername('');
-            setPassword('');
-          }
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
+      props.userSignInPost(username, password);
     }
+    history.push('/projects');
   };
 
   const onUsernameChange = (event) => {
@@ -111,4 +74,11 @@ function SignUp(props) {
   );
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+  userPostFetch: (username, password) =>
+    dispatch(signupActions.signUp(username, password)),
+  userSignInPost: (username, password) =>
+    dispatch(signupActions.signIn(username, password)),
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);

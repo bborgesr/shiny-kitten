@@ -12,7 +12,7 @@ import './ManageProject.css';
 function ManageProject(props) {
   const history = useHistory();
 
-  const username = props.location.state.username;
+  const username = props.user;
   const [project, setProject] = useState(props.location.state.project);
 
   const [newToDo, setNewToDo] = useState({
@@ -30,12 +30,7 @@ function ManageProject(props) {
   }, [props, username]);
 
   const goBack = () => {
-    history.push({
-      pathname: '/projects',
-      state: {
-        username,
-      },
-    });
+    history.push('/projects');
   };
 
   const onSave = (event) => {
@@ -261,6 +256,7 @@ function ManageProject(props) {
 function mapStateToProps(state) {
   return {
     projects: state.projects,
+    user: state.signup.user,
   };
 }
 

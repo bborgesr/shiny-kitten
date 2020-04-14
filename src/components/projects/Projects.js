@@ -13,7 +13,7 @@ function Projects(props) {
 
   useEffect(() => {
     props
-      .loadProjects(props.location.state.username)
+      .loadProjects(props.user)
       .then(() => {
         setLoading(false);
       })
@@ -41,16 +41,13 @@ function Projects(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(
-      `${API_BASE_URL}/person/${props.location.state.username}/projects`,
-      {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify([...props.projects, project]),
-      }
-    );
+    fetch(`${API_BASE_URL}/person/${props.user}/projects`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([...props.projects, project]),
+    });
   };
 
   return (
@@ -69,10 +66,7 @@ function Projects(props) {
             onChange={handleChange}
           />
           <input type='submit' value='Save' className='btn btn-secondary' />
-          <ProjectList
-            projects={props.projects}
-            username={props.location.state.username}
-          />
+          <ProjectList projects={props.projects} username={props.user} />
         </form>
       )}
     </div>
@@ -82,6 +76,7 @@ function Projects(props) {
 function mapStateToProps(state) {
   return {
     projects: state.projects,
+    user: state.signup.user,
   };
 }
 
